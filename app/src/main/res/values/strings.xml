@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Motion Layout</string>
+    <string name="salt">salt</string>
+    <string name="pepper">pepper</string>
+    <string name="mix_em">Mix \'em!</string>
+    <string name="again">Again?</string>
+</resources>

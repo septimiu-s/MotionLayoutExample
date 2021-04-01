@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MotionScene xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:motion="http://schemas.android.com/apk/res-auto">
+
+    <Transition
+        motion:constraintSetEnd="@+id/endSnp"
+        motion:constraintSetStart="@+id/startSnp"
+        motion:duration="2000">
+        <OnClick
+            motion:clickAction="toggle"
+            motion:targetId="@+id/startButton" />
+
+        <KeyFrameSet>
+            <KeyAttribute
+                android:rotation="90"
+                android:scaleX="1.5"
+                android:scaleY="1.5"
+                motion:framePosition="30"
+                motion:motionTarget="@+id/salt" />
+            <KeyAttribute
+                android:rotation="-90"
+                android:scaleX="1.5"
+                android:scaleY="1.5"
+                motion:framePosition="30"
+                motion:motionTarget="@+id/pepper" />
+            <KeyAttribute
+                android:alpha="0"
+                android:scaleX="0"
+                android:scaleY="0"
+                motion:framePosition="1"
+                motion:motionTarget="@+id/startButton"
+                motion:transitionEasing="accelerate" />
+            <KeyPosition
+                motion:framePosition="50"
+                motion:keyPositionType="parentRelative"
+                motion:motionTarget="@+id/salt"
+                motion:percentX="0.5" />
+            <KeyPosition
+                motion:framePosition="50"
+                motion:keyPositionType="parentRelative"
+                motion:motionTarget="@+id/pepper"
+                motion:percentX="0.5" />
+            <KeyPosition
+                motion:framePosition="75"
+                motion:keyPositionType="parentRelative"
+                motion:motionTarget="@+id/salt"
+                motion:percentX="0.75" />
+            <KeyPosition
+                motion:framePosition="75"
+                motion:keyPositionType="parentRelative"
+                motion:motionTarget="@+id/pepper"
+                motion:percentX="0.25" />
+            <KeyCycle
+                android:rotation="10"
+                motion:framePosition="100"
+                motion:motionTarget="@+id/startButton"
+                motion:waveOffset="0"
+                motion:wavePeriod="5"
+                motion:waveShape="sin" />
+        </KeyFrameSet>
+    </Transition>
+
+    <ConstraintSet android:id="@+id/startSnp">
+
+        <Constraint
+            android:id="@id/snp_icon"
+            android:layout_width="1dp"
+            android:layout_height="1dp"
+            android:visibility="invisible"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintTop_toTopOf="parent" />
+
+        <Constraint
+            android:id="@id/salt"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/small_margin"
+            android:layout_marginTop="@dimen/small_margin"
+            motion:layout_constraintEnd_toStartOf="@id/pepper"
+            motion:layout_constraintHorizontal_chainStyle="spread_inside"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintTop_toTopOf="parent" />
+
+        <Constraint
+            android:id="@id/pepper"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/small_margin"
+            android:layout_marginEnd="@dimen/small_margin"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintHorizontal_chainStyle="spread_inside"
+            motion:layout_constraintStart_toEndOf="@id/salt"
+            motion:layout_constraintTop_toTopOf="parent" />
+
+        <Constraint
+            android:id="@id/startButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/double_margin"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintTop_toBottomOf="@id/salt">
+            <CustomAttribute
+                motion:attributeName="text"
+                motion:customStringValue="@string/mix_em" />
+        </Constraint>
+
+    </ConstraintSet>
+
+    <ConstraintSet android:id="@+id/endSnp">
+
+        <Constraint
+            android:id="@id/salt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="invisible"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintTop_toTopOf="parent" />
+
+        <Constraint
+            android:id="@id/pepper"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="invisible"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintTop_toTopOf="parent" />
+
+        <Constraint
+            android:id="@id/startButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/small_margin"
+            android:layout_marginBottom="@dimen/small_margin"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            motion:layout_constraintEnd_toEndOf="parent">
+            <CustomAttribute
+                motion:attributeName="text"
+                motion:customStringValue="@string/again" />
+        </Constraint>
+
+        <Constraint
+            android:id="@id/snp_icon"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/logo_margin"
+            android:layout_marginEnd="@dimen/logo_margin"
+            android:visibility="visible"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintTop_toTopOf="parent" />
+
+    </ConstraintSet>
+</MotionScene>
